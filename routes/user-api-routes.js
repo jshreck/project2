@@ -1,5 +1,5 @@
 var db = require("../models");
-
+//UserSignUp.js
 module.exports = function(app){
     //Creating user from html post Signing UP
     app.post("/api/user", function(req,res){
@@ -8,5 +8,5 @@ module.exports = function(app){
             res.json(dbUser);
         });
     });
-    
+
 }
