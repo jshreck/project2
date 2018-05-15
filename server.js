@@ -1,7 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
-
+//requiring models for db.sequelize.sync()
+var db = require("./models");
 var PORT = process.env.PORT || 3000;
 
 //set up server
@@ -25,7 +26,9 @@ app.use(methodOverride('_method'));
 // Import routes and give the server access to them
 var routes = require("./routes/html-routes.js");
 app.use(routes);
-
+//added the db require for models and sync with promise
+db.sequelize.sync().then(function(){
 app.listen(PORT, function () {
   console.log("App now listening at localhost:" + PORT);
+});
 });
