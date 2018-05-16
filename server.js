@@ -26,6 +26,7 @@ app.use(methodOverride('_method'));
 // Import routes and give the server access to them
 var routes = require("./routes/html-routes.js");
 app.use(routes);
+
 //added the db require for models and sync with promise
 db.sequelize.sync().then(function(){
 app.listen(PORT, function () {
