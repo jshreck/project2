@@ -1,7 +1,10 @@
-module.exports = function(app) {
-  //login/sign up page
-  app.get("/", function (req, res) {
-    res.render("index");
-  });
+var path = require("path");
+
+module.exports= function(app){
+    app.get("/", function(req, res){
+        res.sendFile(path.join(__dirname, "../public/index.html"));
+    })
+     
 }
+
 

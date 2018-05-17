@@ -19,4 +19,7 @@ function openPage(pageName,elmnt,color) {
  var currentPass = $("#passWord").val.trim;
 }
 // Get the element with id="defaultOpen" and click on it
-//document.getElementById("defaultOpen").click();
+$("document").ready(function(){
+document.getElementById("defaultOpen").click();
+
+});
