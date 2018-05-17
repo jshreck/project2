@@ -2,6 +2,7 @@ require('dotenv').config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+
 //requiring models for db.sequelize.sync()
 var db = require("./models");
 var PORT = process.env.PORT || 3000;
@@ -15,11 +16,6 @@ app.use(express.static("public"));
 // setting up body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// Set Handlebars up
-var exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
 
 //to be able to use different methods than html allows
 app.use(methodOverride('_method'));
