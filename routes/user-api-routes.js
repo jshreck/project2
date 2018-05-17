@@ -1,6 +1,5 @@
-var user = require("../models/user.js");
-var blogPost = require("../models/blogPost.js")
-
+var db = require("../models");
+//UserSignUp.js
 module.exports = function(app){
     //Creating user from html post Signing UP
     app.post("/api/newUser", function(req,res){
@@ -10,4 +9,5 @@ module.exports = function(app){
             res.json(dbUser);
         });
     });
+
 }
