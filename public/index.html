@@ -24,7 +24,8 @@
       <div class="row">
         <h1>BLOGGIN'</h1>
         <h2>Sign-Up</h2>
-        <form>
+        <!-- <form> -->
+                <form method="POST" action="/api/newUser">
           <div class="form-group">
             <label for="createUser">User name:</label>
             <input class="form-control" type="text" placeholder="Create Username" id="createUser">
@@ -37,7 +38,8 @@
             <label for="createPass">Create Password</label>
             <input type="password" class="form-control" id="createPass" placeholder="Create Password">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+          <input type="submit" class="btn btn-primary" value="Submit">
         </form>
       </div>
 
