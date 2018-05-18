@@ -28,7 +28,7 @@
         <div class="row">
           <h1>BLOGGIN'</h1>
           <h2>Sign-Up</h2>
-          <form method="POST" action="/api/newUser">
+          <form method="POST" action="/api/newUsers">
             <div class="form-group">
               <label for="createUser">User name:</label>
               <input class="form-control" type="text" placeholder="Create Username" id="createUser" name="newUsername">
@@ -39,9 +39,13 @@
             </div>
             <div class="form-group">
               <label for="createPass">Create Password</label>
-              <input type="password" class="form-control" id="createPass" placeholder="Create Password" name="newPassword">
+              <input type="password" class="form-control" placeholder="Create Password" name="newPassword" id="password1">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+              <label for="createPass">Create Password</label>
+              <input type="password" class="form-control"  placeholder="Create Password" name="newPassword" id="password2">
+            </div>
+            <button type="submit" class="btn btn-primary" id="createSubmit">Submit</button>
           </form>
         </div>
     
@@ -55,17 +59,20 @@
         <div class="row">
           <h1>BLOGGIN'</h1>
           <h2>Sign-In</h2>
-          <form>
+          <!-- <form> -->
             <div class="form-group">
               <label for="userName">User name</label>
               <input class="form-control" type="text" placeholder="Enter Username" id="userName">
             </div>
             <div class="form-group">
               <label for="passWord">Enter Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" id="passWord">
+              <input type="password" class="form-control"  placeholder="Password" id="passWord">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <button type="submit" class="btn btn-primary" id ="submit">Verify</button>
+          <!-- </form> -->
+          <form action="/post" id="userPage" Method="GET"> 
+            <button type="submit" class= "btn btn-primary" class="userHtml" id="submit">SignIn</button>
+        </form>
         </div>
       </div>
     </div>
