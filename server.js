@@ -22,6 +22,7 @@ app.use(methodOverride('_method'));
 
 // Import routes and give the server access to them
 var routes = require("./routes/html-routes.js");
+require("./routes/user-api-routes.js")(app);
 app.use(routes);
 
 //added the db require for models and sync with promise
