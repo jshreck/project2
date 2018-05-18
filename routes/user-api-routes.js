@@ -10,20 +10,22 @@ module.exports = function(app){
         })
     })
 
-    app.get("/api/user/:name?/:password?", function(req, res) {
-        console.log("Get name and password "  + req.params.name);
-
-         db.User.findOne({
-         
-           where: {
-             name: req.params.name,
-             password: req.params.password
-           },
-         }).then(function(dbUser) {
-             console.log("User Password Check");
-                
-             res.json(dbUser);
-             
-         });
-       });
+    app.post('/api/login', function (req,res){ 
+        console.log("Rec'd login info " + req.body); 
+        db.User.findOne({ 
+            where: { 
+                name: req.body.name, 
+                password: req.body.password 
+            } 
+        }).then(function(dbUser){ 
+            console.log("Sign In dbUser: " + dbUser.name); 
+                if (dbUser!=null){ 
+                     
+                    res.json(dbUser); 
+                } 
+                else{ 
+               res.send("Nothing"); 
+            } 
+        }) 
+    }) 
 }

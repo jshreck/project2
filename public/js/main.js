@@ -63,24 +63,24 @@ document.getElementById("defaultOpen").click();
         currentUser = $currentUser.val().trim().toLowerCase();
         currentPass = $currentPass.val().trim();
         console.log(currentUser +"\n" + currentPass);
-        $.get("/api/user/" + currentUser + "/" + currentPass, function(data){
-            // data.name and data.password to sessionStorage
-            sessionStorage.name = data.name;
-            sessionStorage.password = data.password;
-            console.log(data);
-            if (data==null){
-                alert("User Name or Password doesn't match");
-            }
-            if(data!=null){
-                $userHtml.show();
-            }
-        })
-    });
-    if (sessionStorage.name!==undefined){
-        console.log(sessionStorage.name);
-    }else{
-        console.log("no storage")
-    }
+        var userSignIn = { 
+            name: currentUser, 
+            password: currentPass 
+        } 
+        $.post("/api/login", userSignIn).then(function(data){ 
+                console.log("Sign In info: " + userSignIn); 
+                console.log("Data coming back: " + data); 
+                if (data == "Nothing"){ 
+                    alert("User Name or Password is incorrect"); 
+                } 
+                if(data!="Nothing"){ 
+                    console.log("Not Nothing"); 
+                    sessionStorage.name = data.name; 
+                    sessionStorage.password = data.password; 
+                }
+                 
+            }); 
+        });
 
 //+++++++++++++++++++++++++++    
 });
