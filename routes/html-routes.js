@@ -1,15 +1,21 @@
-var express = require("express");
-var router = express.Router();
+var path = require("path");
 
-// Routes
-// =============================================================
+module.exports = function (app) {
+    //for login page
+    app.get("/", (req, res) => {
+        res.render("index");
+    });
 
-
-  // Each of the below routes just handles the HTML page that the user gets sent to.
-
-  // index route loads index.html
-  router.get("/", function(req, res) {
-    res.render("index");
-  });
-
-  module.exports = router;
+    //for handlebars templates... id is name of the file, ex: template0
+    app.get("/templates/:id", (req, res) => {
+        template = req.params.id;
+        //just using for example
+        var hbsObj = {
+            blogPost: [{
+                title: "Example",
+                body: "blahblahblah"
+            }]
+        }
+        res.render(template, hbsObj);
+    });
+};

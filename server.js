@@ -1,6 +1,8 @@
+require('dotenv').config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+
 //requiring models for db.sequelize.sync()
 var db = require("./models");
 var PORT = process.env.PORT || 3000;
@@ -17,15 +19,27 @@ app.use(bodyParser.json());
 
 // Set Handlebars up
 var exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+
+//was here before
+app.engine("handlebars", exphbs({
+  defaultLayout: "main",
+  helpers: {
+    section: function(name, options) { 
+      if (!this._sections) this._sections = {};
+        this._sections[name] = options.fn(this); 
+        return null;
+      }
+  }
+}));
 app.set("view engine", "handlebars");
 
 //to be able to use different methods than html allows
 app.use(methodOverride('_method'));
 
+
 // Import routes and give the server access to them
-var routes = require("./routes/html-routes.js");
-app.use(routes);
+require("./routes/html-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
 
 //added the db require for models and sync with promise
 db.sequelize.sync().then(function(){
