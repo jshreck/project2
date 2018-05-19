@@ -18,12 +18,15 @@ module.exports = function(app){
                 password: req.body.password 
             } 
         }).then(function(dbUser){ 
-            console.log("Sign In dbUser: " + dbUser.name); 
+            console.log("Sign In dbUser: " + dbUser); 
                 if (dbUser!=null){ 
-                     
+                     //login success========================
+                     //res.redirect('')
                     res.json(dbUser); 
                 } 
                 else{ 
+                    //login fail============================
+
                res.send("Nothing"); 
             } 
         }) 
