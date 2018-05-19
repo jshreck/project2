@@ -31,7 +31,7 @@ document.getElementById("defaultOpen").click();
     var newUser;
     var newEmail;
     var $userHtml=$("#userPage");
-    $userHtml.hide();
+    
     $createSubmit.on("click",function(){
 
         event.preventDefault();
@@ -58,7 +58,7 @@ document.getElementById("defaultOpen").click();
     })
     //==============================
     $submit.on("click", function(){
-        
+        event.preventDefault();
         console.log("User Sign In");
         currentUser = $currentUser.val().trim().toLowerCase();
         currentPass = $currentPass.val().trim();
