@@ -1,6 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app){
+    //creating newUser
     app.post("/api/newUsers", function(req,res){
         
         console.log("routes req.body.name " + req.body.name);
@@ -10,6 +11,7 @@ module.exports = function(app){
         })
     })
 
+    //logging in
     app.post('/api/login', function (req,res){ 
         console.log("Rec'd login info " + req.body); 
         db.User.findOne({ 
@@ -30,5 +32,9 @@ module.exports = function(app){
                res.send("Nothing"); 
             } 
         }) 
-    }) 
+    })
+    
+    //creating blog post
+    //updating blog post
+    //deleting blog post
 }
