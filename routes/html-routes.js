@@ -50,4 +50,7 @@ module.exports = function (app) {
             res.render(template, hbsObj);
         });
     });
+
+    //NEED GET REQUEST FOR PAGE WHERE USERS CHOOSE TEMPLATE
+    //NEED GET REQUEST FOR PAGE WHERE USERS MANAGE THEIR OWN BLOG
 };
