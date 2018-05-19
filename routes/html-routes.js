@@ -11,19 +11,24 @@ module.exports = function (app) {
         res.render("blogSpace");
     });
 
-    //create a blog pg
+    //manage pg -> only visible if logged in
     app.get("/create", (req, res) => {
         res.render("createBlog");
     });
 
     //for handlebars templates... id is name of the file, ex: template0
     app.get("/template/:id", (req, res) => {
-        template = "template" + req.params.id;
+
+        template ="template" + req.params.id;
+
         //just using for example
         var hbsObj = {
             blogPost: [{
                 title: "Example",
                 body: "blahblahblah"
+            }, {
+                title: "Example2",
+                body: "blah2blah2blah2"
             }]
         }
         res.render(template, hbsObj);
@@ -60,7 +65,4 @@ module.exports = function (app) {
             res.render(template, hbsObj);
         });
     });
-
-    //NEED GET REQUEST FOR PAGE WHERE USERS CHOOSE TEMPLATE
-    //NEED GET REQUEST FOR PAGE WHERE USERS MANAGE THEIR OWN BLOG
 };
