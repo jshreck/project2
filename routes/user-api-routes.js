@@ -24,7 +24,8 @@ module.exports = function(app){
                 if (dbUser!=null){ 
                      //login success========================
                     console.log("Login Success!");
-                    res.redirect("/template/0")
+                    res.json (dbUser);
+                    //res.redirect("/welcome")
                    
                 } 
                 else{ 
