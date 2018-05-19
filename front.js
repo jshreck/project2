@@ -3,10 +3,6 @@ $(document).ready(function() {
 
     'use strict';
 
-    // ------------------------------------------------------- //
-    // For demo purposes only
-    // ------------------------------------------------------ //
-
     var stylesheet = $('link#theme-stylesheet');
     $("<link id='new-stylesheet' rel='stylesheet'>").insertAfter(stylesheet);
     var alternateColour = $('link#new-stylesheet');
@@ -92,6 +88,11 @@ $(document).ready(function() {
     $('.search-area .close-btn').on('click', function() {
         $('.search-area').fadeOut();
     });
+
+    $('#nav-contact').on('click', function(e) {
+        e.preventDefault();
+        $
+    })
 
 
 
