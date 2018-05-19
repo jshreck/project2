@@ -70,6 +70,8 @@ document.getElementById("defaultOpen").click();
         $.post("/api/login", userSignIn).then(function(data){ 
                 console.log("Sign In info: " + userSignIn); 
                 console.log("Data coming back: " + data); 
+                sessionStorage.id = data.id;
+                
                 if (data == "Nothing"){ 
                     alert("User Name or Password is incorrect"); 
 
@@ -78,8 +80,8 @@ document.getElementById("defaultOpen").click();
                     console.log("Not Nothing"); 
                     sessionStorage.name = data.name; 
                     sessionStorage.password = data.password;
-                    
-                    window.location.replace("/template/0");
+                    //route to after sign in
+                    window.location.replace("/welcome");
                     
                 }
                  
