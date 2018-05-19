@@ -21,7 +21,7 @@ module.exports = function(app){
             console.log("Sign In dbUser: " + dbUser); 
                 if (dbUser!=null){ 
                      //login success========================
-                     //res.redirect('')
+                     //git res.redirect('')
                     res.json(dbUser); 
                 } 
                 else{ 
