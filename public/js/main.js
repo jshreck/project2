@@ -72,11 +72,15 @@ document.getElementById("defaultOpen").click();
                 console.log("Data coming back: " + data); 
                 if (data == "Nothing"){ 
                     alert("User Name or Password is incorrect"); 
+
                 } 
                 if(data!="Nothing"){ 
                     console.log("Not Nothing"); 
                     sessionStorage.name = data.name; 
-                    sessionStorage.password = data.password; 
+                    sessionStorage.password = data.password;
+                    
+                    window.location.replace("/template/0");
+                    
                 }
                  
             }); 

@@ -7,8 +7,8 @@ module.exports = function (app) {
     });
 
     //for handlebars templates... id is name of the file, ex: template0
-    app.get("/templates/:id", (req, res) => {
-        template = req.params.id;
+    app.get("/template/:id", (req, res) => {
+        template ="template" + req.params.id;
         //just using for example
         var hbsObj = {
             blogPost: [{
