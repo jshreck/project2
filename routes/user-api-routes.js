@@ -37,6 +37,17 @@ module.exports = function(app){
     })
     
     //creating blog post
+    app.post("api/newPost", (req,res) => {
+
+    });
+
     //updating blog post
+    app.put("api/update/:postID", (req, res) => {
+
+    });
+    
     //deleting blog post
+    app.delete("api/delete/:postID", (req, res) => {
+
+    });
 }
