@@ -22,6 +22,7 @@ var exphbs = require("express-handlebars");
 
 //was here before
 app.engine("handlebars", exphbs({
+
     defaultLayout: "main",
     helpers: {
         section: function(name, options) {
@@ -31,6 +32,7 @@ app.engine("handlebars", exphbs({
         }
     }
 }));
+
 app.set("view engine", "handlebars");
 
 //to be able to use different methods than html allows

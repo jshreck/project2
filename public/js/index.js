@@ -31,7 +31,7 @@ document.getElementById("defaultOpen").click();
     var newUser;
     var newEmail;
     var $userHtml=$("#userPage");
-    $userHtml.hide();
+    
     $createSubmit.on("click",function(){
 
         event.preventDefault();
@@ -58,7 +58,7 @@ document.getElementById("defaultOpen").click();
     })
     //==============================
     $submit.on("click", function(){
-        
+        event.preventDefault();
         console.log("User Sign In");
         currentUser = $currentUser.val().trim().toLowerCase();
         currentPass = $currentPass.val().trim();
@@ -70,13 +70,19 @@ document.getElementById("defaultOpen").click();
         $.post("/api/login", userSignIn).then(function(data){ 
                 console.log("Sign In info: " + userSignIn); 
                 console.log("Data coming back: " + data); 
+                sessionStorage.id = data.id;
+                
                 if (data == "Nothing"){ 
                     alert("User Name or Password is incorrect"); 
+
                 } 
                 if(data!="Nothing"){ 
                     console.log("Not Nothing"); 
                     sessionStorage.name = data.name; 
-                    sessionStorage.password = data.password; 
+                    sessionStorage.password = data.password;
+                    //route to after sign in
+                    window.location.replace("/welcome");
+                    
                 }
                  
             }); 
