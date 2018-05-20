@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-sm-12">
+        <form method="POST" action="/api/newPost">
+            <input type="hidden" name="new">
+            <button type="submit">New</button>
+        </form>
+    </div>
+</div>
+
+{{#each blogPost}}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{title}}</h3>
+            </div>
+            <div class="panel-body">
+
+                <form method="POST" action="/api/delete?_method=DELETE">
+                    <input type="hidden" name="delete">
+                    <button type="submit">X</button>
+                </form>
+                <form method="POST" action="/api/update?_method=PUT">
+                    <input type="hidden" name="edit">
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
