@@ -17,7 +17,9 @@
         </div>
     </div>
 
-<button type="button" class="btn btn-default" data-userid="{{userID}}" id="create">new post</button>
+{{username}}
+
+<a href="/blogspace/{{username}}/newPost"><button type="button" class="btn btn-default" data-userid="{{userID}}" id="create">new post</button></a>
 
 {{#each blogPost}}
 <div class="list-group" id="{{id}}">

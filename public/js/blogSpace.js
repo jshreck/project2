@@ -23,11 +23,6 @@ $(document).ready(() => {
 
     });
 });
-// $("#create").on("click", function () {
-
-//     event.preventDefault();
-// //create new blogPost
-// });
 
 // $("#edit").on("click", function () {
 

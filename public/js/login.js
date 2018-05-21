@@ -13,7 +13,7 @@ function openPage(pageName, elmnt, color) {
 
 }
 
-$("document").ready(() => {
+$(document).ready(() => {
     // Get the element with id="defaultOpen" and click on it
     $("#defaultOpen").click();
 
@@ -56,7 +56,7 @@ $("document").ready(() => {
         $.post("/api/login", data).then((response) => {
             //if successful, redirects to blogspace
             console.log(response);
-                sessionStorage.setItem("loggedIn", username);
+                sessionStorage.loggedIn = username;
                 window.location.replace("/blogspace/" + sessionStorage.loggedIn);
         })
             .catch((err) => {
@@ -67,23 +67,4 @@ $("document").ready(() => {
 
 });
 
-
-
-
-
-    //==============================
-
-    //             if(data!="Nothing"){ 
-    //                 console.log("Not Nothing"); 
-    //                 sessionStorage.name = data.name; 
-    //                 sessionStorage.password = data.password;
-    //                 //route to after sign in
-    //                 window.location.replace("/welcome");
-
-    //             }
-
-    //         }); 
-    //     });
-
-//+++++++++++++++++++++++++++    
-// });
+ 
