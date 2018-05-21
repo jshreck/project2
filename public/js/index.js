@@ -31,7 +31,7 @@ document.getElementById("defaultOpen").click();
     var newUser;
     var newEmail;
     var $userHtml=$("#userPage");
-    $userHtml.hide();
+    
     $createSubmit.on("click",function(){
 
         event.preventDefault();
@@ -58,29 +58,35 @@ document.getElementById("defaultOpen").click();
     })
     //==============================
     $submit.on("click", function(){
-        
+        event.preventDefault();
         console.log("User Sign In");
         currentUser = $currentUser.val().trim().toLowerCase();
         currentPass = $currentPass.val().trim();
         console.log(currentUser +"\n" + currentPass);
-        $.get("/api/user/" + currentUser + "/" + currentPass, function(data){
-            // data.name and data.password to sessionStorage
-            sessionStorage.name = data.name;
-            sessionStorage.password = data.password;
-            console.log(data);
-            if (data==null){
-                alert("User Name or Password doesn't match");
-            }
-            if(data!=null){
-                $userHtml.show();
-            }
-        })
-    });
-    if (sessionStorage.name!==undefined){
-        console.log(sessionStorage.name);
-    }else{
-        console.log("no storage")
-    }
+        var userSignIn = { 
+            name: currentUser, 
+            password: currentPass 
+        } 
+        $.post("/api/login", userSignIn).then(function(data){ 
+                console.log("Sign In info: " + userSignIn); 
+                console.log("Data coming back: " + data); 
+                sessionStorage.id = data.id;
+                
+                if (data == "Nothing"){ 
+                    alert("User Name or Password is incorrect"); 
+
+                } 
+                if(data!="Nothing"){ 
+                    console.log("Not Nothing"); 
+                    sessionStorage.name = data.name; 
+                    sessionStorage.password = data.password;
+                    //route to after sign in
+                    window.location.replace("/welcome");
+                    
+                }
+                 
+            }); 
+        });
 
 //+++++++++++++++++++++++++++    
 });
