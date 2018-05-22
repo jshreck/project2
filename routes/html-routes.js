@@ -71,18 +71,72 @@ module.exports = function (app) {
 
     //blogSpace
     app.get("/blogspace/:username", (req, res) => {
-        // var loggedIn = sessionStorage.getItem('loggedIn');
-        // if (loggedIn === req.params.username) {
-        //     console.log("access granted");
-        //     res.render("blogSpace");
-        // }
-        // else {
-        //     res.redirect("/");
-        // }
-        res.render("blogSpace");
+        //need check to make sure user is logged in in order to view this
+
+        var username = req.params.username;
+
+        //find userid where user name then
+        var username = req.params.username;
+        var hbsObj;
+        var userID;
+
+        //get user
+        db.User.findOne({
+            where: {
+                username: username
+            }
+            //get user's id
+        }).then((user) => {
+            userID = user.dataValues.id;
+            console.log("userID: " + userID);
+            //get user's blog posts
+        }).then(() => {
+            db.BlogPost.findAll({
+                where: {
+                    UserID: userID
+                }
+            }).then((blogPost) => {
+                var hbsObj = {
+                    blogPost,
+                    userID,
+                    username
+                };
+                res.render("blogSpace", hbsObj);
+            });
+        });
+    });
+
+
+    //pg to newPost
+    app.get("/blogspace/:username/newPost", (req, res) => {
+        //need check to make sure user is logged in in order to view this
+
+        var username = req.params.username;
+
+        //find userid where user name then
+        var username = req.params.username;
+        var hbsObj;
+        var userID;
+
+        //get user
+        db.User.findOne({
+            where: {
+                username: username
+            }
+            //get user's id
+        }).then((user) => {
+            userID = user.dataValues.id;
+            console.log("userID: " + userID);
+    
+        }).then(() => {
+            var hbsObj = {
+                userID,
+                username
+            };
+            res.render("newPost", hbsObj);
+        });
     });
 }
 
 
 
-   
